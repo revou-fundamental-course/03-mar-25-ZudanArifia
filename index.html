@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Website</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="School Logo">
+                <span>Our School</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="profile.html">Our Profile</a>
+                <a href="#facilities">Achievement</a>
+                <a href="#contact">Message Us</a>
+            </div>
+            <button id="nav-toggle" class="nav-toggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 id="welcome-message">Hi, Welcome To Website</h1>
+            <p>To deliver website silicon perfume</p>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="facilities">
+        <div class="facilities-container">
+            <div class="facility-card">
+                <img src="images/teacher.jpg" alt="Professional Teacher">
+                <h3>Professional Teacher</h3>
+                <p>Our experienced teachers are dedicated to student success.</p>
+            </div>
+            <div class="facility-card">
+                <img src="images/field.jpg" alt="Sport Field">
+                <h3>Sport Field</h3>
+                <p>Modern sports facilities for physical education and recreation.</p>
+            </div>
+            <div class="facility-card">
+                <img src="images/classroom.jpg" alt="Classroom">
+                <h3>Classroom</h3>
+                <p>Well-equipped classrooms for optimal learning environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <form id="message-form">
+                <h2>Message Us</h2>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div>
+                        <input type="radio" id="male" name="gender" value="male" required>
+                        <label for="male">Male</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            <div id="form-result"></div>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
