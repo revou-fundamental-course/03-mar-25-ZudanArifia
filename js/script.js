@@ -1,68 +1,113 @@
-// Welcome Message
 document.addEventListener('DOMContentLoaded', function() {
-    // Get user name from localStorage or prompt
-    let userName = localStorage.getItem('userName');
-    if (!userName) {
-        userName = prompt('Please enter your name:');
-        if (userName) {
-            localStorage.setItem('userName', userName);
+    let userName = document.cookie.split(';').find(c => c.trim().startsWith('userName='));
+    let name = '';
+    
+    while (!name) {
+        if (!userName) {
+            name = prompt('Masukkan nama Anda:');
+            if (!name || name.trim() === '') {
+                alert('Nama harus diisi. Silakan masukkan nama Anda.');
+                name = '';
+            } else {
+                name = name.trim();
+                document.cookie = 'userName=' + name + ';path=/';
+            }
+        } else {
+            name = userName.split('=')[1];
         }
     }
     
-    // Update welcome message
-    const welcomeMessage = document.getElementById('welcome-message');
-    if (welcomeMessage && userName) {
-        welcomeMessage.textContent = `Hi ${userName}, Welcome To Website`;
-    }
-});
+    document.getElementById('userName').textContent = name;
 
-// Form Validation
-document.addEventListener('DOMContentLoaded', function() {
-    const messageForm = document.getElementById('message-form');
+    // Update current time
+    function updateTime() {
+        document.getElementById('currentTime').textContent = new Date().toLocaleTimeString();
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+
+    // Handle form submission
+    const messageForm = document.getElementById('messageForm');
     if (messageForm) {
         messageForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Get form values
-            const name = document.getElementById('name').value;
-            const date = document.getElementById('date').value;
-            const gender = document.querySelector('input[name="gender"]:checked')?.value;
-            const message = document.getElementById('message').value;
+            const nama = document.getElementById('nama').value;
+            const tanggal = document.getElementById('tanggal').value;
+            const gender = document.querySelector('input[name="gender"]:checked')?.value || '';
+            const pesan = document.getElementById('pesan').value;
             
-            // Validate form
-            if (!name || !date || !gender || !message) {
-                alert('Please fill in all fields');
-                return;
-            }
+            // Format the date nicely
+            const formattedDate = tanggal ? new Date(tanggal).toLocaleDateString('id-ID') : '';
             
-            // Display form values
-            const formResult = document.getElementById('form-result');
-            if (formResult) {
-                const currentTime = new Date().toLocaleString();
-                formResult.innerHTML = `
-                    <h3>Form Submission Result:</h3>
-                    <p><strong>Current time:</strong> ${currentTime}</p>
-                    <p><strong>Name:</strong> ${name}</p>
-                    <p><strong>Date:</strong> ${date}</p>
-                    <p><strong>Gender:</strong> ${gender}</p>
-                    <p><strong>Message:</strong> ${message}</p>
-                `;
-            }
-            
-            // Clear form
-            messageForm.reset();
-        });
-    }
-});
+            // Update preview
+            document.getElementById('previewNama').textContent = nama;
+            document.getElementById('previewTanggal').textContent = formattedDate;
+            document.getElementById('previewGender').textContent = gender;
+            document.getElementById('previewPesan').textContent = pesan;
 
-// Mobile Navigation Toggle
-document.addEventListener('DOMContentLoaded', function() {
-    const navToggle = document.getElementById('nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (navToggle && navLinks) {
-        navToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('show');
+            // Optional: Scroll preview into view
+            document.getElementById('messagePreview').scrollIntoView({ behavior: 'smooth' });
         });
     }
+
+    // Image Slider
+    let currentSlide = 0;
+    const slides = document.querySelector('.slides');
+    const totalSlides = document.querySelectorAll('.slide').length;
+    const dots = document.querySelectorAll('.dot');
+    let autoSlide;
+
+    function showSlide(index) {
+        if (index >= totalSlides) currentSlide = 0;
+        else if (index < 0) currentSlide = totalSlides - 1;
+        else currentSlide = index;
+        
+        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        updateDots();
+    }
+
+    function updateDots() {
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentSlide].classList.add('active');
+    }
+
+    // Next/Previous controls
+    document.querySelector('.next').addEventListener('click', () => {
+        clearInterval(autoSlide);
+        showSlide(currentSlide + 1);
+        startAutoSlide();
+    });
+
+    document.querySelector('.prev').addEventListener('click', () => {
+        clearInterval(autoSlide);
+        showSlide(currentSlide - 1);
+        startAutoSlide();
+    });
+
+    // Dot navigation
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            clearInterval(autoSlide);
+            showSlide(parseInt(dot.getAttribute('data-slide')));
+            startAutoSlide();
+        });
+    });
+
+    // Auto slide
+    function startAutoSlide() {
+        autoSlide = setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 4000); // 4 seconds
+    }
+
+    // Start slider
+    showSlide(0);
+    startAutoSlide();
+
+    // Pause on hover
+    const sliderContainer = document.querySelector('.slider-container');
+    sliderContainer.addEventListener('mouseenter', () => clearInterval(autoSlide));
+    sliderContainer.addEventListener('mouseleave', startAutoSlide);
 });

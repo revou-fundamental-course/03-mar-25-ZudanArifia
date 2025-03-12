@@ -3,87 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Website</title>
+    <title>My Website</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="images/logo.png" alt="School Logo">
-                <span>Our School</span>
-            </a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="profile.html">Our Profile</a>
-                <a href="#facilities">Achievement</a>
-                <a href="#contact">Message Us</a>
-            </div>
-            <button id="nav-toggle" class="nav-toggle">☰</button>
+    <header class="top-bar">
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
         </div>
-    </nav>
+        <nav class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="profile.html">Profile</a>
+            <a href="#hobi">Hobi</a>
+            <a href="#message">Message Us</a>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 id="welcome-message">Hi, Welcome To Website</h1>
-            <p>To deliver website silicon perfume</p>
-        </div>
-    </section>
+    <main>
+        <section class="welcome">
+            <h1>Hi <span id="userName">Guest</span>, Welcome to my first ever Website</h1>
+            <p>Ini adalah pengalaman pertama kali membuat sebuah website.</p>
+        </section>
 
-    <!-- Facilities Section -->
-    <section id="facilities" class="facilities">
-        <div class="facilities-container">
-            <div class="facility-card">
-                <img src="images/teacher.jpg" alt="Professional Teacher">
-                <h3>Professional Teacher</h3>
-                <p>Our experienced teachers are dedicated to student success.</p>
+        <div class="slider-container">
+            <div class="slides">
+                <div class="slide"><img src="images/slide1.jpg" alt="Slide 1"></div>
+                <div class="slide"><img src="images/slide2.jpg" alt="Slide 2"></div>
+                <div class="slide"><img src="images/slide3.jpg" alt="Slide 3"></div>
             </div>
-            <div class="facility-card">
-                <img src="images/field.jpg" alt="Sport Field">
-                <h3>Sport Field</h3>
-                <p>Modern sports facilities for physical education and recreation.</p>
-            </div>
-            <div class="facility-card">
-                <img src="images/classroom.jpg" alt="Classroom">
-                <h3>Classroom</h3>
-                <p>Well-equipped classrooms for optimal learning environment.</p>
+            <button class="prev">&lt;</button>
+            <button class="next">&gt;</button>
+            <div class="dots">
+                <span class="dot" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
             </div>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="contact-container">
-            <form id="message-form">
-                <h2>Message Us</h2>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" required>
+        <section class="hobi" id="hobi">
+            <h2>Hobi</h2>
+            <div class="circles">
+                <div class="circle-item">
+                    <div class="circle">
+                        <img src="images/Game.png" alt="Ngegame Icon">
+                    </div>
+                    <p>Ngegame</p>
                 </div>
-                <div class="form-group">
-                    <label for="date">Date</label>
-                    <input type="date" id="date" required>
+                <div class="circle-item">
+                    <div class="circle">
+                        <img src="images/Kuliner.png" alt="Kuliner Icon">
+                    </div>
+                    <p>Kuliner</p>
                 </div>
-                <div class="form-group">
-                    <label>Gender</label>
-                    <div>
-                        <input type="radio" id="male" name="gender" value="male" required>
-                        <label for="male">Male</label>
-                        <input type="radio" id="female" name="gender" value="female">
-                        <label for="female">Female</label>
+                <div class="circle-item">
+                    <div class="circle">
+                        <img src="images/Coding.png" alt="Coding Icon">
+                    </div>
+                    <p>Coding</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="message">
+            <h2>Message Us</h2>
+            <div class="message-container">
+                <div class="form-side">
+                    <form id="messageForm">
+                        <div class="form-group">
+                            <label>Nama:</label>
+                            <input type="text" id="nama" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Tanggal Lahir:</label>
+                            <input type="date" id="tanggal" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Jenis Kelamin:</label>
+                            <div class="radio-group">
+                                <input type="radio" name="gender" value="Laki-laki" required> Laki-laki
+                                <input type="radio" name="gender" value="Perempuan"> Perempuan
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Pesan:</label>
+                            <textarea id="pesan" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="preview-side">
+                    <div id="messagePreview">
+                        <p>Current time: <span id="currentTime"></span></p>
+                        <p>Nama: <span id="previewNama"></span></p>
+                        <p>Tanggal Lahir: <span id="previewTanggal"></span></p>
+                        <p>Jenis Kelamin: <span id="previewGender"></span></p>
+                        <p>Pesan: <span id="previewPesan"></span></p>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Submit</button>
-            </form>
-            <div id="form-result"></div>
-        </div>
-    </section>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Created By Irham Zudan Arifia ©</p>
+    </footer>
 
     <script src="js/script.js"></script>
 </body>
