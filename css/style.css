@@ -60,6 +60,35 @@ body {
     background: #555;
 }
 
+/* Adjust Navigation Bar for Mobile Devices */
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column; /* Stack logo and nav links vertically */
+        align-items: center; /* Center items horizontally */
+        padding: 15px; /* Adjust padding for better spacing */
+    }
+
+    .logo img {
+        width: 40px; /* Slightly reduce logo size for mobile */
+        height: 40px;
+        margin-bottom: 10px; /* Add space between logo and nav links */
+    }
+
+    .nav-links {
+        flex-direction: column; /* Stack nav links vertically */
+        gap: 10px; /* Reduce gap between nav links */
+        width: 100%; /* Make nav links take full width */
+        align-items: center; /* Center nav links */
+    }
+
+    .nav-links a {
+        width: 50%; /* Make buttons take up 80% of the width for better appearance */
+        text-align: center; /* Center the text inside buttons */
+        padding: 10px; /* Adjust padding for better touch target size */
+        font-size: 12px; /* Slightly reduce font size for mobile */
+    }
+}
+
 /* Profile Page Styles */
 .banner {
     height: 400px;
@@ -348,6 +377,19 @@ footer {
     font-size: 16px;
     line-height: 1.4;
     margin: 0;
+}
+
+/* Adjust Hobi section for mobile devices */
+@media (max-width: 768px) {
+    .circles {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        gap: 40px; /* Reduce gap between items for better spacing on mobile */
+    }
+
+    .circle-item {
+        max-width: 100%; /* Allow items to take full width if needed */
+    }
 }
 
 /* Message Form */
