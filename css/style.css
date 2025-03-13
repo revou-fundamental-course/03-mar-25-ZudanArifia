@@ -819,6 +819,7 @@ textarea:valid {
     position: relative;
     overflow: hidden;
     background: #fff;
+    border-radius: 20px; /* Sudut tumpul untuk slider container */
 }
 
 .slides {
@@ -831,29 +832,15 @@ textarea:valid {
 .slide {
     min-width: 100%;
     height: 100%;
+    border-radius: 20px; /* Sudut tumpul untuk slide */
+    overflow: hidden; /* Pastikan konten tidak meluap */
 }
 
 .slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-@media (max-width: 768px) {
-    .slider-container {
-        aspect-ratio: 4/3;
-    }
-    
-    .prev, .next {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
-    
-    .dot {
-        width: 8px;
-        height: 8px;
-    }
+    border-radius: 20px; /* Sudut tumpul untuk gambar */
 }
 
 .prev, .next {
@@ -901,6 +888,33 @@ textarea:valid {
 
 .dot.active {
     background: white;
+}
+
+/* Media Queries untuk Responsivitas */
+@media (max-width: 768px) {
+    .slider-container {
+        aspect-ratio: 4/3;
+        border-radius: 15px; /* Sudut tumpul lebih kecil untuk layar kecil */
+    }
+    
+    .slide {
+        border-radius: 15px; /* Sesuaikan slide */
+    }
+
+    .slide img {
+        border-radius: 15px; /* Sesuaikan gambar */
+    }
+    
+    .prev, .next {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
 }
 
 /* Profile Page Layout */
